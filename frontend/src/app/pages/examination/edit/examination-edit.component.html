@@ -1,0 +1,37 @@
+<header id="nav-bar"></header>
+
+<div class="container">
+    <tabset [justified]="true">
+        <tab heading="Описание">
+            <h1>{{examination.name ? examination.name : 'New examination'}}</h1>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Наименование теста</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" [(ngModel)]="examination.name" placeholder="Наименование теста">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputDescription" class="col-sm-2 col-form-label">Описание</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="inputDescription" [(ngModel)]="examination.description" placeholder="Описание"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPrice" class="col-sm-2 col-form-label">Цена</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputPrice" [(ngModel)]="examination.price" placeholder="Цена">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="button" class="btn btn-primary" (click)="save()">Сохранить</button>
+                </div>
+            </div>
+        </tab>
+        <tab heading="Вопросы">Short Labeled Justified content</tab>
+        <tab heading="Схема расчёта">Long Labeled Justified content</tab>
+    </tabset>
+</div>

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="container">
+        <div *ngFor="let examination of examinations" (click)="gotoDetail(examination)" class="col-md-3">
+            <div class="card card-warning card-inverse">
+                <div class="card-header card-warning">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-book fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-xs-right">
+                            <div class="huge">{{examination.name}}</div>
+                            <div>{{examination.price}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer card-yellow">
+                    <a href="javascript:;">
+                        <span class="pull-xs-left">Подробнее</span>
+                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal #examinationModal>
+    <modal-header [show-close]="true">
+        <div class="modal-header">
+        <h2 class="modal-title">{{examination.name}}</h2>
+        </div>
+    </modal-header>
+    <modal-body>
+        <h3>Описание теста</h3>
+        <div>
+            <input type="text" class="form-control" required [(ngModel)]="examination.description">
+        </div>
+    </modal-body>
+    <modal-footer>
+        <a type="button" class="btn btn-primary" [routerLink]="['questions', examination.id]">Начать тест</a>
+    </modal-footer>
+</modal>
