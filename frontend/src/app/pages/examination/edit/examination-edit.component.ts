@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
 import {ExaminationService} from "../../../services/examination.service";
-import {Router} from '@angular/router';
+import {Router} from "@angular/router";
 import {Examination} from "../../../models/examination";
-import {ModalComponent} from "ng2-bs4-modal/components/modal"
+import {QuestionsTab} from "./questions-tab";
 
 @Component({
     selector: 'examination-edit',
@@ -13,6 +13,7 @@ import {ModalComponent} from "ng2-bs4-modal/components/modal"
 export class ExaminationEditComponent implements OnInit {
     // vars
     public examination: Examination;
+    @ViewChild(QuestionsTab) public questionsPanel: QuestionsTab;
 
     // constructor
     constructor(private router: Router, private _examinationService: ExaminationService) {
@@ -29,7 +30,9 @@ export class ExaminationEditComponent implements OnInit {
     }
 
     save() {
-        this.examination.questions = [];
+        if (!this.examination.questions || this.examination.questions.length == 0)
+            return;
+
         this._examinationService.saveExamination(this.examination);
     }
 }

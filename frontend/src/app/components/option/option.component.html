@@ -1,0 +1,27 @@
+<div [class.editing]="editMode" class="fluid-row">
+    <div class="edit col-xs-9">
+        <input [value]="item.text ? item.text : ''"
+               #optionInput
+               (keyup.escape)="cancelEdit(optionInput)">
+    </div>
+    <div class="edit col-xs-3">
+        <button *ngIf="editMode" class="btn btn-warning"
+                (click)="commitEdit(item, optionInput.value)"><i
+                class="fa fa-check"></i></button>
+        <button *ngIf="editMode" class="btn btn-warning"
+                (click)="cancelEdit(optionInput)"><i
+                class="fa fa-close"></i></button>
+    </div>
+
+    <div class="view col-xs-9">
+        {{item.text}}
+    </div>
+    <div class="view col-xs-3">
+        <button *ngIf="!editMode" class="btn btn-warning"
+                (click)="enterEditMode(optionInput)"><i
+                class="fa fa-pencil"></i></button>
+        <button *ngIf="!editMode" class="btn btn-warning"
+                (click)="removeClicked()"><i
+                class="fa fa-minus-square"></i></button>
+    </div>
+</div>

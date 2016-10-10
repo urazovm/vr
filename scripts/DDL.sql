@@ -44,16 +44,16 @@ CREATE TABLE questions
 CREATE UNIQUE INDEX questions_qss_id_uindex ON questions (qss_id);
 CREATE UNIQUE INDEX questions_qss_exm_id_uindex ON questions (qss_exm_id);
 
-CREATE TABLE answers
+CREATE TABLE options
 (
-  aws_id UUID PRIMARY KEY NOT NULL,
-  aws_qss_id UUID NOT NULL REFERENCES questions (qss_id),
-  aws_answer VARCHAR(1024) NOT NULL,
-  aws_right BOOLEAN NOT NULL DEFAULT FALSE
+  opt_id UUID PRIMARY KEY NOT NULL,
+  opt_qss_id UUID NOT NULL REFERENCES questions (qss_id),
+  opt_option VARCHAR(1024) NOT NULL,
+  opt_right BOOLEAN NOT NULL DEFAULT FALSE
 );
-CREATE UNIQUE INDEX answers_aws_id_uindex ON answers (aws_id);
-CREATE UNIQUE INDEX answers_aws_qss_id_uindex ON answers (aws_qss_id);
-CREATE UNIQUE INDEX answers_aws_right_uindex ON answers (aws_right);
+CREATE UNIQUE INDEX options_opt_id_uindex ON options (opt_id);
+CREATE UNIQUE INDEX options_opt_qss_id_uindex ON options (opt_qss_id);
+CREATE UNIQUE INDEX options_opt_right_uindex ON options (opt_right);
 
 CREATE TABLE account_examinations
 (
@@ -75,17 +75,17 @@ CREATE TABLE examination_results
 );
 CREATE UNIQUE INDEX examination_results_exr_id_uindex ON examination_results (exr_id);
 
-CREATE TABLE examination_answers
+CREATE TABLE examination_options
 (
   exa_id UUID PRIMARY KEY NOT NULL,
   exa_exr_id UUID NOT NULL REFERENCES examination_results (exr_id),
-  exa_aws_id UUID NOT NULL REFERENCES answers (aws_id),
+  exa_opt_id UUID NOT NULL REFERENCES options (opt_id),
   exa_answered BOOLEAN NOT NULL DEFAULT FALSE
 );
-CREATE UNIQUE INDEX examination_answers_exa_id_uindex ON examination_answers (exa_id);
+CREATE UNIQUE INDEX examination_options_exa_id_uindex ON examination_options (exa_id);
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 INSERT INTO examinations (exm_name, exm_description, exm_price) VALUES ('Тест 1', 'Здесь будет описание теста', 1300)
 
-INSERT INTO questions (qss_exm_id, qss_question, qss_description, qss_weight, qss_type) VALUES (cast('52d1aba6-d244-41ea-9cb0-85a42fa76263' as UUID),	'Вопрос 3',	'Это третий вопрос',	1.3,	0)
+INSERT INTO questions (id, exm_id, qss_question, qss_description, qss_weight, qss_type) VALUES (uuid,cast('214b6a8a-ae35-49d9-bc26-71ca53a7bde3' as UUID),	'Вопрос 3',	'Это третий вопрос',	1.3,	0)

@@ -8,5 +8,5 @@ export class Account {
     state: number;
     secretKey: string;
     lastLoginTime: Date;
-    accountExaminations: Array<AccountExamination>;
+    accountExaminations: Array<AccountExamination> = [];
 }

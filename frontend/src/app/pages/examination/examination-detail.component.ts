@@ -3,7 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {ExaminationService} from "../../services/examination.service";
 import {Examination} from "../../models/examination";
 import {Question} from "../../models/question";
-import {Answer} from "../../models/answer";
+import {Option} from "../../models/option";
 
 @Component({
     selector: 'examination-detail',
@@ -16,7 +16,7 @@ export class ExaminationDetailComponent implements OnInit {
     private examination: Examination;
     public questions: Array<Question>;
     public question: Question;
-    public questionAnswers: Array<Answer>;
+    public questionOption: Array<Option>;
     private _subscription;
     private _subscriptionQuestion;
     public currentQuestion: number = 1;
@@ -30,12 +30,12 @@ export class ExaminationDetailComponent implements OnInit {
 
             if (this.question) {
                 let questionId: string = this.question.id;
-                this._subscriptionQuestion = this._examinationService.getAnswersForQuestion(questionId)
+                this._subscriptionQuestion = this._examinationService.getOptionsForQuestion(questionId)
                     .subscribe((data) => {
-                            this.questionAnswers = data;
+                            this.questionOption = data;
                         },
                         (err) => console.log(err),
-                        () => console.log(`Answers retrieved`)
+                        () => console.log(`Option retrieved`)
                     );
             }
         }

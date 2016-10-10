@@ -19,7 +19,7 @@ public class ExaminationController {
     ExaminationService examinationService;
 
     @ResponseBody
-    @RequestMapping(value = "examination", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "examinations", method = RequestMethod.GET, produces="application/json")
     public List getExaminations() {
         return examinationService.getExaminations();
     }

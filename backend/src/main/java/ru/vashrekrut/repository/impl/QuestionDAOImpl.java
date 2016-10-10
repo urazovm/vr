@@ -1,12 +1,10 @@
 package ru.vashrekrut.repository.impl;
 
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.vashrekrut.domain.examination.Question;
 import ru.vashrekrut.repository.GenericDAOImpl;
 import ru.vashrekrut.repository.intrf.QuestionDAO;
 
-import javax.persistence.criteria.Predicate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

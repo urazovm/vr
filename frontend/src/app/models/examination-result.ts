@@ -1,7 +1,7 @@
 import {Question} from "./question";
-import {Answer} from "./answer";
+import {Option} from "./option";
 
 export class ExaminationResult extends Question {
     answered: boolean;
-    answeres: Array<Answer>;
+    options: Array<Option> = [];
 }

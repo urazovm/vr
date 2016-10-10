@@ -1,0 +1,51 @@
+<li class="list-group-item">
+    <div [class.questionEditing]="questionEditMode" class="row" data-toggle="options">
+        <div class="questionEdit col-xs-9">
+            <input [value]="item.text ? item.text : ''"
+                   #questionInput
+                   (keyup.escape)="cancelEdit(questionInput)">
+        </div>
+        <div class="questionEdit col-xs-2">
+            <button *ngIf="questionEditMode" class="btn btn-warning"
+                    (click)="commitEdit(item, questionInput.value)"><i
+                    class="fa fa-check"></i></button>
+            <button *ngIf="questionEditMode" class="btn btn-warning"
+                    (click)="cancelEdit(questionInput)"><i
+                    class="fa fa-close"></i></button>
+        </div>
+
+        <div class="questionView col-xs-9">
+            <div (click)="isCollapsed = !isCollapsed">{{index + 1}}. {{item.text}}</div>
+        </div>
+        <div class="questionView col-xs-3">
+            <button class="button btn btn-primary" [disabled]="questionEditMode"
+                    (click)="createNewOption()"><i
+                    class="fa fa-plus"></i></button>
+            <button *ngIf="!questionEditMode" class="btn btn-warning"
+                    (click)="enterEditMode(questionInput)"><i
+                    class="fa fa-pencil"></i></button>
+            <button *ngIf="!questionEditMode" class="btn btn-warning"
+                    (click)="removeClicked()"><i
+                    class="fa fa-minus-square"></i></button>
+        </div>
+    </div>
+
+    <div id="options" [collapse]="isCollapsed">
+        <hr/>
+        <div class="container">
+
+            <option-item *ngFor="let option of item.options; let i = index"
+                         [item]="option"
+                         [index]="i"
+                         (itemRemove)="onRemoveOption($event)"
+                         (itemUpdated)="optionUpdated($event)"></option-item>
+
+            <option-item *ngIf="currentOption"
+                         [editMode]="true"
+                         [isNew]="true"
+                         [item]="currentOption"
+                         (itemUpdated)="optionUpdated($event)"
+                         (itemRemove)="onRemoveOption($event)"></option-item>
+        </div>
+    </div>
+</li>

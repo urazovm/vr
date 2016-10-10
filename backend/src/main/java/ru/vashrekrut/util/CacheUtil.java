@@ -1,8 +1,8 @@
 package ru.vashrekrut.util;
 
+import ru.vashrekrut.domain.examination.Option;
 import ru.vashrekrut.enums.CacheItemKey;
 import ru.vashrekrut.domain.DomainObject;
-import ru.vashrekrut.domain.examination.Answer;
 import ru.vashrekrut.domain.examination.Examination;
 import ru.vashrekrut.domain.examination.Question;
 import ru.vashrekrut.domain.user.User;
@@ -36,7 +36,7 @@ public class CacheUtil {
     public static void addToCache(CacheItemKey key, final DomainObject item) {
         if ((key == CacheItemKey.EXAMINATIONS && item instanceof Examination) ||
                 (key == CacheItemKey.QUESTIONS && item instanceof Question) ||
-                (key == CacheItemKey.ANSWERES && item instanceof Answer) ||
+                (key == CacheItemKey.OPTIONS && item instanceof Option) ||
                 (key == CacheItemKey.ACCOUNT && item instanceof User))
             cache.get(key).add(item);
         else
@@ -46,7 +46,7 @@ public class CacheUtil {
     public static void updateCacheValue(CacheItemKey key, final DomainObject item) {
         if ((key == CacheItemKey.EXAMINATIONS && item instanceof Examination) ||
                 (key == CacheItemKey.QUESTIONS && item instanceof Question) ||
-                (key == CacheItemKey.ANSWERES && item instanceof Answer) ||
+                (key == CacheItemKey.OPTIONS && item instanceof Option) ||
                 (key == CacheItemKey.ACCOUNT && item instanceof User))
             cache.get(key).parallelStream().forEach(o -> {
                 if (o.getId().equals(item.getId())) {

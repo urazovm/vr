@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.vashrekrut.domain.DomainObject;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * Created by root on 9/2/16.
@@ -22,7 +20,7 @@ public class ExaminationResult extends DomainObject {
     private AccountExamination accountExamination;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "examinationResult", cascade = CascadeType.ALL)
-    private Set<ExaminationAnswer> examinationAnswers;
+    private Set<ExaminationOption> examinationOptions;
 
     @Column(name = "exr_answered")
     private boolean answered;
@@ -35,12 +33,12 @@ public class ExaminationResult extends DomainObject {
         this.accountExamination = accountExamination;
     }
 
-    public Set<ExaminationAnswer> getExaminationAnswers() {
-        return examinationAnswers;
+    public Set<ExaminationOption> getExaminationOptions() {
+        return examinationOptions;
     }
 
-    public void setExaminationAnswers(Set<ExaminationAnswer> examinationAnswers) {
-        this.examinationAnswers = examinationAnswers;
+    public void setExaminationOptions(Set<ExaminationOption> examinationOptions) {
+        this.examinationOptions = examinationOptions;
     }
 
     public boolean isAnswered() {

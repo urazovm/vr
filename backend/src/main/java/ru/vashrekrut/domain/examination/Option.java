@@ -4,25 +4,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.vashrekrut.domain.DomainObject;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
-@Table(name = "answers")
-@AttributeOverride(name = "id", column = @Column(name = "aws_id"))
+@Table(name = "options")
+@AttributeOverride(name = "id", column = @Column(name = "opt_id"))
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQuery(name = "Answer.findAnswerByQuestion", query = "select a from Answer a where a.question.id = :qss_id")
-public class Answer extends DomainObject {
-    public static final String FIND_BY_QUESTION = "Answer.findAnswerByQuestion";
+@NamedQuery(name = "Option.findOptionByQuestion", query = "SELECT o FROM Option o WHERE o.question.id = :qss_id")
+public class Option extends DomainObject {
+    public static final String FIND_BY_QUESTION = "Option.findOptionByQuestion";
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "qss_id", nullable = false)
     private Question question;
 
-    @Column(name = "aws_answer")
-    private String answer;
+    @Column(name = "opt_text")
+    private String text;
 
-    @Column(name = "aws_right")
+    @Column(name = "opt_right")
     private boolean right;
 
     public Question getQuestion() {
@@ -33,12 +32,12 @@ public class Answer extends DomainObject {
         this.question = question;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getText() {
+        return text;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setText(String option) {
+        this.text = text;
     }
 
     public boolean isRight() {

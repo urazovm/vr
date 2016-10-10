@@ -1,9 +1,9 @@
-import {Answer} from "./answer";
+import {Option} from "./option";
 
 export class Question {
     id: string;
-    question: string;
+    text: string;
     description: string;
     examinationId: string;
-    answers: Array<Answer>;
+    options: Array<Option> = [];
 }

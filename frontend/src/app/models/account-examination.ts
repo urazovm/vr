@@ -7,5 +7,5 @@ export class AccountExamination extends Examination {
     completed: boolean;
     payed: boolean;
     startTime: Date;
-    examinationResults: Array<ExaminationResult>
+    examinationResults: Array<ExaminationResult> = [];
 }

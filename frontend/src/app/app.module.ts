@@ -2,7 +2,10 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA, enableProdMode} from '@angular/core';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CarouselModule, DropdownModule, Ng2BootstrapModule, PaginationModule, TabsModule} from "ng2-bootstrap";
+import {
+    CarouselModule, DropdownModule, Ng2BootstrapModule, PaginationModule, TabsModule,
+    CollapseModule
+} from "ng2-bootstrap";
 import {HttpModule} from "@angular/http";
 import {ModalModule} from "ng2-bs4-modal"
 
@@ -18,6 +21,9 @@ import {HeaderComponent} from "./facets/header/header";
 import {MainCarousel} from "./facets/carousel/main-carousel";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {ExaminationEditComponent} from "./pages/examination/edit/examination-edit.component";
+import {QuestionsTab} from "./pages/examination/edit/questions-tab";
+import {OptionComponent} from "./components/option/option.component";
+import {QuestionComponent} from "./components/question/question.component";
 
 @NgModule({
     declarations: [
@@ -30,7 +36,10 @@ import {ExaminationEditComponent} from "./pages/examination/edit/examination-edi
         HeaderComponent,
         MainCarousel,
         ProfileComponent,
-        ExaminationEditComponent
+        ExaminationEditComponent,
+        QuestionsTab,
+        QuestionComponent,
+        OptionComponent
     ],
     imports: [
         Ng2BootstrapModule,
@@ -43,6 +52,7 @@ import {ExaminationEditComponent} from "./pages/examination/edit/examination-edi
         DropdownModule,
         PaginationModule,
         TabsModule,
+        CollapseModule,
         routing],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [

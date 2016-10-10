@@ -7,9 +7,7 @@ import ru.vashrekrut.domain.DomainObject;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * Created by root on 9/2/16.
@@ -27,8 +25,8 @@ public class Question extends DomainObject {
     @JoinColumn(name = "exm_id")
     private Examination examination;
 
-    @Column(name = "qss_question")
-    private String question;
+    @Column(name = "qss_text")
+    private String text;
 
     @Column(name = "qss_description")
     private String description;
@@ -41,7 +39,7 @@ public class Question extends DomainObject {
     private QuestionType type;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL)
-    private Set<Answer> answers = new HashSet<>(0);
+    private Set<Option> options = new HashSet<>(0);
 
     public Examination getExamination() {
         return examination;
@@ -51,12 +49,12 @@ public class Question extends DomainObject {
         this.examination = examination;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getText() {
+        return text;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getDescription() {
@@ -83,11 +81,11 @@ public class Question extends DomainObject {
         this.type = type;
     }
 
-    public Set<Answer> getAnswers() {
-        return answers;
+    public Set<Option> getOptions() {
+        return options;
     }
 
-    public void setAnswers(Set<Answer> answers) {
-        this.answers = answers;
+    public void setOptions(Set<Option> options) {
+        this.options = options;
     }
 }

@@ -24,14 +24,15 @@
                     <input type="number" class="form-control" id="inputPrice" [(ngModel)]="examination.price" placeholder="Цена">
                 </div>
             </div>
-
-            <div class="form-group row">
-                <div class="offset-sm-2 col-sm-10">
-                    <button type="button" class="btn btn-primary" (click)="save()">Сохранить</button>
-                </div>
-            </div>
         </tab>
-        <tab heading="Вопросы">Short Labeled Justified content</tab>
+        <tab heading="Вопросы">
+            <questions-edit id="questions-edit" [examination]="examination"></questions-edit>
+        </tab>
         <tab heading="Схема расчёта">Long Labeled Justified content</tab>
     </tabset>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="button" class="btn btn-primary" (click)="save()">Сохранить</button>
+        </div>
+    </div>
 </div>

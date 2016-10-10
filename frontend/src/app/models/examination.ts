@@ -5,5 +5,5 @@ export class Examination {
     name: string;
     description: string;
     price: number;
-    questions: Array<Question>;
+    questions: Array<Question> = [];
 }

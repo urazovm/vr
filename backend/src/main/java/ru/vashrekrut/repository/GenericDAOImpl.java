@@ -38,6 +38,7 @@ public abstract class GenericDAOImpl<T extends DomainObject, PK extends Serializ
         return persistentClass;
     }
 
+    @Transactional
     public void save(T entity) {
         if (entity.getId() == null) {
             create(entity);
@@ -47,7 +48,6 @@ public abstract class GenericDAOImpl<T extends DomainObject, PK extends Serializ
     }
 
     @Transactional
-    @SuppressWarnings("unchecked")
     private void create(T newInstance) {
         em.persist(newInstance);
     }

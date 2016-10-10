@@ -4,14 +4,14 @@
             <a [routerLink]="['']" class="btn btn-primary">Home Page</a>
         </div>
         <p class="h1 title">Examination</p>
-        <div *ngIf="question" class="card card-success card-inverse">
+        <div *ngIf="text" class="card card-success card-inverse">
             <div class="card-header card-warning">
-                {{question.question}}
+                {{text.text}}
             </div>
             <div class="card-block bg-white">
-                <div *ngFor="let answer of questionAnswers" class="checkbox">
+                <div *ngFor="let option of questionOptions" class="checkbox">
                     <label>
-                        <input class="form-check-input" type="checkbox" value=""> {{answer.answer}}
+                        <input class="form-check-input" type="checkbox" value=""> {{option.text}}
                     </label>
                 </div>
             </div>

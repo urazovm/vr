@@ -1,26 +1,25 @@
 <div class="container-fluid">
     <div class="container">
-        <div *ngFor="let examination of examinations" (click)="gotoDetail(examination)" class="col-md-3">
-            <div class="card card-warning card-inverse">
-                <div class="card-header card-warning">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-book fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-xs-right">
-                            <div class="huge">{{examination.name}}</div>
-                            <div>{{examination.price}}</div>
-                        </div>
-                    </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" *ngFor="let examination of examinations"
+             (click)="gotoDetail(examination)" class="col-md-3">
+            <!-- PRICE ITEM -->
+            <div class="panel price panel-red">
+                <div class="panel-heading  text-center">
+                    <h3>{{examination.name}}</h3>
                 </div>
-                <div class="card-footer card-yellow">
-                    <a href="javascript:;">
-                        <span class="pull-xs-left">Подробнее</span>
-                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
+                <div class="panel-body text-center">
+                    <p class="lead" style="text-align:center; font-size:40px"><strong>{{examination.price}}</strong></p>
+                </div>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
+                </ul>
+                <div class="panel-footer">
+                    <a class="btn btn-lg btn-block btn-danger" href="#">BUY NOW!</a>
                 </div>
             </div>
+            <!-- /PRICE ITEM -->
         </div>
     </div>
 </div>
@@ -28,7 +27,7 @@
 <modal #examinationModal>
     <modal-header [show-close]="true">
         <div class="modal-header">
-        <h2 class="modal-title">{{examination.name}}</h2>
+            <h2 class="modal-title">{{examination.name}}</h2>
         </div>
     </modal-header>
     <modal-body>

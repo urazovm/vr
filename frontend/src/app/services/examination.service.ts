@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {AppSettings} from "../properties/app.settings";
 import {Examination} from "../models/examination";
 import {Observable} from "rxjs";
+import {Question} from "../models/question";
 
 @Injectable()
 export class ExaminationService {
@@ -12,7 +13,7 @@ export class ExaminationService {
     }
 
     getExaminations() {
-        return this._http.get(`${AppSettings.API_ENDPOINT}/examination`)
+        return this._http.get(`${AppSettings.API_ENDPOINT}/examinations`)
             .map((res: Response) => res.json());
     }
 
@@ -26,8 +27,8 @@ export class ExaminationService {
             .map((res: Response) => res.json());
     }
 
-    getAnswersForQuestion(questionId: string) {
-        return this._http.get(`${AppSettings.API_ENDPOINT}/answers/${questionId}`)
+    getOptionsForQuestion(questionId: string) {
+        return this._http.get(`${AppSettings.API_ENDPOINT}/options/${questionId}`)
             .map((res: Response) => res.json());
     }
 
@@ -46,5 +47,9 @@ export class ExaminationService {
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || ' error');
+    }
+
+    addQuestion(question: Question) {
+        question = new Question();
     }
 }

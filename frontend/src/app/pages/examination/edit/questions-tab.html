@@ -1,0 +1,23 @@
+<div id="questions-panel" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Список вопросов
+            <button class="button btn btn-primary" (click)="createNewQuestion()">Добавить
+                вопрос
+            </button>
+        </h3>
+    </div>
+    <ul class="list-group">
+        <question-item *ngFor="let question of examination.questions; let i = index;"
+                       [item]="question"
+                       [index]="i"
+                       (itemUpdated)="questionUpdated($event)"
+                       (itemRemove)="onRemoveQuestion($event)"></question-item>
+
+        <question-item *ngIf="currentQuestion"
+                       [questionEditMode]="true"
+                       [isNew]="true"
+                       [item]="currentQuestion"
+                       (itemUpdated)="questionUpdated($event)"
+                       (itemRemove)="onRemoveQuestion($event)"></question-item>
+    </ul>
+</div>

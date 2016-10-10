@@ -1,6 +1,6 @@
-export class Answer {
+export class Option {
     id: string;
     questionId: string;
-    answer: string;
+    text: string;
     right: boolean;
 }

@@ -6,7 +6,7 @@ package ru.vashrekrut.enums;
 public enum CacheItemKey {
     EXAMINATIONS,
     QUESTIONS,
-    ANSWERES,
+    OPTIONS,
     ACCOUNT_RESULTS,
     ACCOUNT
 }
