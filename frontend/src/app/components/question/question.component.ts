@@ -21,7 +21,7 @@ export class QuestionComponent {
     index?: number;
 
     @Input()
-    questionEditMode: boolean = false;
+    editMode: boolean = false;
 
     @Input()
     item: Question;
@@ -41,14 +41,14 @@ export class QuestionComponent {
     }
 
     enterEditMode(element: HTMLInputElement) {
-        this.questionEditMode = true;
-        if (this.questionEditMode) {
+        this.editMode = true;
+        if (this.editMode) {
             setTimeout(() => { element.focus(); }, 0);
         }
     }
 
     cancelEdit(element: HTMLInputElement) {
-        this.questionEditMode = false;
+        this.editMode = false;
         element.value = this.item.text ? this.item.text : '';
 
         if (this.isNew) {
@@ -57,7 +57,7 @@ export class QuestionComponent {
     }
 
     commitEdit(updatedItem: Question, text: string) {
-        this.questionEditMode = false;
+        this.editMode = false;
         updatedItem.text = text;
         this.itemUpdated.emit({
             item: updatedItem,

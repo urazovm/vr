@@ -36,7 +36,7 @@ public class Question extends DomainObject {
 
     @Column(name = "qss_type")
     @Enumerated(value = EnumType.ORDINAL)
-    private QuestionType type;
+    private QuestionType type = QuestionType.SINGLE;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL)
     private Set<Option> options = new HashSet<>(0);

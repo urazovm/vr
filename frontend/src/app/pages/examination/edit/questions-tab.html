@@ -6,18 +6,16 @@
             </button>
         </h3>
     </div>
-    <ul class="list-group">
-        <question-item *ngFor="let question of examination.questions; let i = index;"
-                       [item]="question"
-                       [index]="i"
-                       (itemUpdated)="questionUpdated($event)"
-                       (itemRemove)="onRemoveQuestion($event)"></question-item>
+    <question-item *ngFor="let question of examination.questions; let i = index;"
+                   [item]="question"
+                   [index]="i"
+                   (itemUpdated)="questionUpdated($event)"
+                   (itemRemove)="onRemoveQuestion($event)"></question-item>
 
-        <question-item *ngIf="currentQuestion"
-                       [questionEditMode]="true"
-                       [isNew]="true"
-                       [item]="currentQuestion"
-                       (itemUpdated)="questionUpdated($event)"
-                       (itemRemove)="onRemoveQuestion($event)"></question-item>
-    </ul>
+    <question-item *ngIf="currentQuestion"
+                   [editMode]="true"
+                   [isNew]="true"
+                   [item]="currentQuestion"
+                   (itemUpdated)="questionUpdated($event)"
+                   (itemRemove)="onRemoveQuestion($event)"></question-item>
 </div>

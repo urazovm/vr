@@ -1,7 +1,6 @@
 package ru.vashrekrut.repository;
 
 import ru.vashrekrut.domain.DomainObject;
-import ru.vashrekrut.domain.user.Account;
 
 import java.io.Serializable;
 import java.util.List;

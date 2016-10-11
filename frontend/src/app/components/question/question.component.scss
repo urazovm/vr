@@ -1,3 +1,11 @@
+input {
+  height: 25px;
+}
+
+.header-btn {
+  margin-top: 10px;
+}
+
 div.questionEditing .questionEdit {
   display: block;
 }
@@ -8,4 +16,69 @@ div.questionEditing .questionView {
 
 div .questionEdit {
   display: none;
+}
+
+.questionTitle {
+  cursor: pointer;
+}
+
+.title {
+  color: #ff0000 !important;
+}
+
+.widget {
+  background: #fff;
+  margin: 0 auto 20px;
+  position: static;
+  border: 1px solid #c1c1c1;
+}
+
+.widget .widget-head {
+  background-color: #f8f8f8;
+  background-image: -moz-linear-gradient(top, #f8f8f8, #ededed);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f8f8f8), to(#ededed));
+  background-image: -webkit-linear-gradient(top, #f8f8f8, #ededed);
+  background-image: -o-linear-gradient(top, #f8f8f8, #ededed);
+  background-image: linear-gradient(to bottom, #f8f8f8, #ededed);
+  background-repeat: repeat-x;
+  border-bottom: 1px solid #c1c1c1;
+  color: #000000;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  padding: 0 15px 0 0;
+}
+
+.widget .widget-footer {
+  background: #f7f7f7;
+  height: 25px;
+  line-height: 25px;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #ffffff;
+}
+
+.widget .widget-footer .fa {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  padding: 0;
+  float: right;
+}
+
+.widget .widget-footer .fa span:before {
+  font-size: 16px;
+  text-align: center;
+  width: 20px;
+  height: 25px;
+  line-height: 25px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.widget .widget-footer .fa:hover span:before {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.footer-btn {
+  cursor: pointer;
 }

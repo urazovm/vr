@@ -40,21 +40,7 @@ public abstract class GenericDAOImpl<T extends DomainObject, PK extends Serializ
 
     @Transactional
     public void save(T entity) {
-        if (entity.getId() == null) {
-            create(entity);
-        } else {
-            update(entity);
-        }
-    }
-
-    @Transactional
-    private void create(T newInstance) {
-        em.persist(newInstance);
-    }
-
-    @Transactional
-    private void update(T trancientObject) {
-        em.merge(trancientObject);
+        em.merge(entity);
     }
 
     @Transactional

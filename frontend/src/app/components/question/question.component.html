@@ -1,39 +1,30 @@
-<li class="list-group-item">
-    <div [class.questionEditing]="questionEditMode" class="row" data-toggle="options">
-        <div class="questionEdit col-xs-9">
-            <input [value]="item.text ? item.text : ''"
-                   #questionInput
-                   (keyup.escape)="cancelEdit(questionInput)">
-        </div>
-        <div class="questionEdit col-xs-2">
-            <button *ngIf="questionEditMode" class="btn btn-warning"
-                    (click)="commitEdit(item, questionInput.value)"><i
-                    class="fa fa-check"></i></button>
-            <button *ngIf="questionEditMode" class="btn btn-warning"
-                    (click)="cancelEdit(questionInput)"><i
-                    class="fa fa-close"></i></button>
-        </div>
+<div [class.questionEditing]="editMode" class="row col-xs-10" data-toggle="options">
+    <div class="widget"> <!-- TYPE PANEL -->
+        <div class="widget-head"> <!-- HEAD PANEL -->
+            <div class="questionEdit col-xs-12">
+                <input [value]="item.text ? item.text : ''"
+                       #questionInput
+                       (keyup.escape)="cancelEdit(questionInput)">
 
-        <div class="questionView col-xs-9">
-            <div (click)="isCollapsed = !isCollapsed">{{index + 1}}. {{item.text}}</div>
-        </div>
-        <div class="questionView col-xs-3">
-            <button class="button btn btn-primary" [disabled]="questionEditMode"
-                    (click)="createNewOption()"><i
-                    class="fa fa-plus"></i></button>
-            <button *ngIf="!questionEditMode" class="btn btn-warning"
-                    (click)="enterEditMode(questionInput)"><i
-                    class="fa fa-pencil"></i></button>
-            <button *ngIf="!questionEditMode" class="btn btn-warning"
-                    (click)="removeClicked()"><i
-                    class="fa fa-minus-square"></i></button>
-        </div>
-    </div>
+                <button class="header-btn fa fa-close fa-lg pull-right"
+                        (click)="cancelEdit(questionInput)"></button>
+                <button class="header-btn fa fa-check-square-o fa-lg pull-right"
+                        (click)="commitEdit(item, questionInput.value)"></button>
+            </div>
 
-    <div id="options" [collapse]="isCollapsed">
-        <hr/>
-        <div class="container">
+            <div class="questionView col-xs-12">
+                <span (dblclick)="enterEditMode(questionInput)">{{index + 1}}. {{item.text}}</span>
 
+                <button class="header-btn fa fa-trash-o fa-lg pull-right"
+                        (click)="removeClicked()"></button>
+                <button class="header-btn fa fa-pencil-square-o fa-lg pull-right"
+                        (click)="enterEditMode(questionInput)"></button>
+                <button class="header-btn fa fa-plus-square-o fa-lg pull-right"
+                        (click)="createNewOption()"></button>
+            </div>
+        </div><!-- /HEAD PANEL -->
+
+        <div class="widget-body" id="options" [collapse]="isCollapsed"> <!-- CONTENT PANEL -->
             <option-item *ngFor="let option of item.options; let i = index"
                          [item]="option"
                          [index]="i"
@@ -46,6 +37,12 @@
                          [item]="currentOption"
                          (itemUpdated)="optionUpdated($event)"
                          (itemRemove)="onRemoveOption($event)"></option-item>
-        </div>
-    </div>
-</li>
+        </div><!-- /CONTENT PANEL -->
+
+        <div class="widget-footer"><!-- FOOTER PANEL-->
+            <span [ngClass]="isCollapsed ? 'fa-chevron-down' : 'fa-chevron-up'" class="fa fa-1x pull-right footer-btn"
+                  (click)="isCollapsed = !isCollapsed"></span>
+        </div><!-- /FOOTER PANEL-->
+
+    </div> <!-- /TYPE PANEL -->
+</div>

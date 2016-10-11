@@ -3,6 +3,7 @@ package ru.vashrekrut.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vashrekrut.domain.examination.Examination;
+import ru.vashrekrut.domain.examination.Option;
 import ru.vashrekrut.domain.examination.Question;
 import ru.vashrekrut.repository.intrf.ExaminationDAO;
 import ru.vashrekrut.service.intf.ExaminationService;
@@ -44,6 +45,12 @@ public class ExaminationServiceImpl implements ExaminationService {
         if (examination.getQuestions() != null) {
             for (Question question : examination.getQuestions()) {
                 question.setExamination(examination);
+
+                if (question.getOptions() != null) {
+                    for (Option option : question.getOptions()) {
+                        option.setQuestion(question);
+                    }
+                }
             }
         }
 
