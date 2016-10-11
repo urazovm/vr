@@ -5,7 +5,9 @@
                 <input [value]="item.text ? item.text : ''"
                        #questionInput
                        (keyup.escape)="cancelEdit(questionInput)">
-
+                <select [(ngModel)]="item.type">
+                    <option *ngFor="let type of types" [label]="getTypeLabelByValue(type)" [value]="type">{{type}}</option>
+                </select>
                 <button class="header-btn fa fa-close fa-lg pull-right"
                         (click)="cancelEdit(questionInput)"></button>
                 <button class="header-btn fa fa-check-square-o fa-lg pull-right"
@@ -15,6 +17,8 @@
             <div class="questionView col-xs-12">
                 <span (dblclick)="enterEditMode(questionInput)">{{index + 1}}. {{item.text}}</span>
 
+                <button class="header-btn fa fa-question-circle-o fa-lg pull-right"
+                        (click)="showDescription()"></button>
                 <button class="header-btn fa fa-trash-o fa-lg pull-right"
                         (click)="removeClicked()"></button>
                 <button class="header-btn fa fa-pencil-square-o fa-lg pull-right"
@@ -46,3 +50,5 @@
 
     </div> <!-- /TYPE PANEL -->
 </div>
+
+<description-item #descriptionModal [item]="item"></description-item>

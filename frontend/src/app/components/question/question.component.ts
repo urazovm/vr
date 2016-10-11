@@ -1,11 +1,11 @@
-import {
-    Component, Input, ChangeDetectionStrategy, Output,
-    EventEmitter
-} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, ElementRef} from "@angular/core";
 import {Option} from "../../models/option";
 import ItemUpdatedEvent from "../option-update-event";
 import {Question} from "../../models/question";
 import QuestionUpdatedEvent from "../question-update-event";
+import {DescriptionModalComponent} from "../common/description.component";
+import {EnumValues} from "enum-values"
+import {QuestionType} from "../../models/question-type";
 
 @Component({
     selector: 'question-item',
@@ -32,9 +32,33 @@ export class QuestionComponent {
     @Output()
     itemUpdated = new EventEmitter<QuestionUpdatedEvent>();
 
+    @ViewChild('descriptionModal')
+    descriptionModal: DescriptionModalComponent;
+
     currentOption: Option = null;
 
     isCollapsed: boolean = false;
+
+    status:{isopen:boolean} = {isopen: false};
+
+    types: Array<number>;
+
+    constructor() {
+        this.types = EnumValues.getValues(QuestionType);
+    }
+
+    getTypeLabelByValue(value: number) {
+        switch (value) {
+            case QuestionType.SINGLE:
+                return 'Single';
+            case QuestionType.MULTIVALUE:
+                return 'Multivalue';
+            case QuestionType.TRUE_FALSE:
+                return 'true/false';
+        }
+
+        return '---'
+    }
 
     removeClicked() {
         this.itemRemove.emit(this.index);
@@ -85,5 +109,9 @@ export class QuestionComponent {
         }
 
         this.currentOption = null;
+    }
+
+    showDescription() {
+        this.descriptionModal.open();
     }
 }

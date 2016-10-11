@@ -1,17 +1,21 @@
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA, enableProdMode} from '@angular/core';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA, enableProdMode} from "@angular/core";
+import {LocationStrategy, HashLocationStrategy} from "@angular/common";
+import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
-    CarouselModule, DropdownModule, Ng2BootstrapModule, PaginationModule, TabsModule,
+    CarouselModule,
+    DropdownModule,
+    Ng2BootstrapModule,
+    PaginationModule,
+    TabsModule,
     CollapseModule
 } from "ng2-bootstrap";
-import {HttpModule} from "@angular/http";
-import {ModalModule} from "ng2-bs4-modal"
-
-import {AppComponent} from './app.component';
-import {HelloComponent} from './pages/hello/hello.component';
-import {HomeComponent} from './pages/home/home.component';
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from "ng2-translate";
+import {HttpModule, Http} from "@angular/http";
+import {ModalModule} from "ng2-bs4-modal";
+import {AppComponent} from "./app.component";
+import {HelloComponent} from "./pages/hello/hello.component";
+import {HomeComponent} from "./pages/home/home.component";
 import {ExaminationDashboardComponent} from "./pages/examination/examination-dashboard.component";
 import {routing} from "./app.routes";
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
@@ -24,6 +28,7 @@ import {ExaminationEditComponent} from "./pages/examination/edit/examination-edi
 import {QuestionsTab} from "./pages/examination/edit/questions-tab";
 import {OptionComponent} from "./components/option/option.component";
 import {QuestionComponent} from "./components/question/question.component";
+import {DescriptionModalComponent} from "./components/common/description.component";
 
 @NgModule({
     declarations: [
@@ -39,7 +44,8 @@ import {QuestionComponent} from "./components/question/question.component";
         ExaminationEditComponent,
         QuestionsTab,
         QuestionComponent,
-        OptionComponent
+        OptionComponent,
+        DescriptionModalComponent
     ],
     imports: [
         Ng2BootstrapModule,
@@ -53,6 +59,11 @@ import {QuestionComponent} from "./components/question/question.component";
         PaginationModule,
         TabsModule,
         CollapseModule,
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        }),
         routing],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -63,5 +74,5 @@ import {QuestionComponent} from "./components/question/question.component";
 export class AppModule {
 }
 
-enableProdMode()
+enableProdMode();
 platformBrowserDynamic().bootstrapModule(AppModule);

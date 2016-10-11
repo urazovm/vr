@@ -34,14 +34,14 @@
                                 <img src="assets/img/is.png" alt="language"/> Английский
                             </a>
                             <ul class="dropdown-menu language" style="width: 10px;" aria-labelledby="languageMenu">
-                                <li><a href="#" class="dropdown-item"><img src="assets/img/be.png" alt="language"/>Бельгийский</a>
+                                <li><span class="dropdown-item" (click)="changeLanguage('en')"><img src="assets/img/be.png" alt="language"/>Бельгийский</span>
                                 </li>
-                                <li><a href="#" class="dropdown-item"><img src="assets/img/bv.png" alt="language"/>Баварский</a>
+                                <li><span class="dropdown-item" (click)="changeLanguage('ru')"><img src="assets/img/bv.png" alt="language"/>Баварский</span>
                                 </li>
-                                <li><a href="#" class="dropdown-item"><img src="assets/img/ck.png"
-                                                                           alt="language"/>Чешский</a></li>
-                                <li><a href="#" class="dropdown-item"><img src="assets/img/ae.png" alt="language"/>Ещё
-                                    какой-то</a></li>
+                                <li><span class="dropdown-item"><img src="assets/img/ck.png"
+                                                                           alt="language"/>Чешский</span></li>
+                                <li><span class="dropdown-item"><img src="assets/img/ae.png" alt="language"/>Ещё
+                                    какой-то</span></li>
                             </ul>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <ul class="nav navbar-nav top-nav navbar-right pull-xs-right top-right-nav">
                             <li class="nav-item buy-now">
                                 <a [routerLink]="['']" class="btn btn-default-outline buy-now-btn" role="button"
-                                   style="padding: .375rem 1rem !important; border-color: #999;">Главная</a>
+                                   style="padding: .375rem 1rem !important; border-color: #999;">{{'home_button' | translate}}</a>
                             </li>
                             <li class="nav-item buy-now">
                                 <a [routerLink]="['examination']" class="btn btn-default-outline buy-now-btn" role="button"

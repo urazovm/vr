@@ -1,0 +1,12 @@
+<modal #descriptionModal>
+    <modal-header [show-close]="true">
+        <div class="modal-header">
+            <h2 class="modal-title">Описание</h2>
+        </div>
+    </modal-header>
+    <modal-body>
+        <div>
+            <textarea class="form-control" required [(ngModel)]="item.description"></textarea>
+        </div>
+    </modal-body>
+</modal>
